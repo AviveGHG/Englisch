@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Englisch Test 8. Klasse - If-Clauses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.8); }
+        }
+        .animated-bg {
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .float-elem {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="animated-bg min-h-screen text-slate-100 font-sans flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="p-6 text-center">
+        <div class="inline-block float-elem">
+            <span class="bg-indigo-500/20 text-indigo-300 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full border border-indigo-500/30">Klasse 8 • Vorausschau</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mt-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">
+            If-Clauses Master Test
+        </h1>
+        <p class="text-slate-400 mt-2 max-w-xl mx-auto">Viel Erfolg bei der Vorbereitung auf deine morgige Englischarbeit!</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 max-w-3xl mb-12">
+        <form id="quiz-form" class="space-y-6">
+
+            <!-- Intro Info Box -->
+            <div class="glass-card p-6 rounded-2xl border-l-4 border-indigo-500">
+                <h2 class="text-lg font-bold text-indigo-300 mb-1"><i class="fas fa-circle-info mr-2"></i>Hinweise zum Test:</h2>
+                <p class="text-sm text-slate-300">Setze die Verben in Klammern in die richtige Form ein. Du musst keine Großbuchstaben beachten. Leichte Tippfehler werden automatisch verziehen!</p>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="questions-container" class="space-y-6"></div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-btn" class="w-full py-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 font-bold text-lg rounded-2xl shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-check-circle mr-2"></i> Test abgeben & Note berechnen
+            </button>
+        </form>
+
+        <!-- Result View (Hidden by default) -->
+        <div id="result-card" class="hidden glass-card p-8 rounded-3xl text-center border border-indigo-500/30 my-8">
+            <div id="grade-badge" class="w-28 h-28 mx-auto rounded-full flex items-center justify-center text-4xl font-extrabold text-white shadow-2xl mb-4">
+                -
+            </div>
+            <h2 id="result-title" class="text-3xl font-bold text-white mb-2"></h2>
+            <p id="result-desc" class="text-slate-300 mb-6"></p>
+            <div class="p-4 bg-slate-900/50 rounded-xl mb-6 border border-slate-700/50 flex justify-around text-center">
+                <div>
+                    <span class="block text-slate-400 text-xs uppercase">Richtig</span>
+                    <span id="correct-count" class="text-2xl font-bold text-emerald-400">0</span>
+                </div>
+                <div>
+                    <span class="block text-slate-400 text-xs uppercase">Erreicht</span>
+                    <span id="percentage" class="text-2xl font-bold text-indigo-400">0%</span>
+                </div>
+                <div>
+                    <span class="block text-slate-400 text-xs uppercase">Gesamt</span>
+                    <span class="text-2xl font-bold text-slate-200">10</span>
+                </div>
+            </div>
+            <button onclick="location.reload()" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 font-medium text-slate-200 rounded-xl transition border border-slate-600">
+                <i class="fas fa-rotate-right mr-2"></i> Test nochmal wiederholen
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-slate-500 text-xs">
+        Viel Erfolg für deine Englischarbeit morgen! 🍀
+    </footer>
+
+    <script>
+        const questions = [
+            { id: 1, textBefore: "If it rains tomorrow,", textAfter: "the party in the garden. (we / cancel)", answers: ["we will cancel", "we'll cancel"] },
+            { id: 2, textBefore: "If I found a wallet in the street,", textAfter: "it to the police. (I / give)", answers: ["i would give", "i'd give"] },
+            { id: 3, textBefore: "If she had studied harder,", textAfter: "the exam easily. (she / pass)", answers: ["she would have passed", "she'd have passed"] },
+            { id: 4, textBefore: "If they hurry up,", textAfter: "the bus on time. (they / catch)", answers: ["they will catch", "they'll catch"] },
+            { id: 5, textBefore: "If he had more free time,", textAfter: "a new hobby. (he / start)", answers: ["he would start", "he'd start"] },
+            { id: 6, textBefore: "If you don't wake up early,", textAfter: "late for school. (you / be)", answers: ["you will be", "you'll be"] },
+            { id: 7, textBefore: "If I knew his phone number,", textAfter: "him right now. (I / call)", answers: ["i would call", "i'd call"] },
+            { id: 8, textBefore: "If we had taken a map,", textAfter: "in the mountains. (we / not get lost)", answers: ["we would not have got lost", "we wouldn't have got lost", "we wouldn't have gotten lost"] },
+            { id: 9, textBefore: "If she goes to London,", textAfter: "Big Ben. (she / visit)", answers: ["she will visit", "she'll visit"] },
+            { id: 10, textBefore: "If they had asked me,", textAfter: "them with pleasure. (I / help)", answers: ["i would have helped", "i'd have helped"] }
+        ];
+
+        // Render Questions
+        const container = document.getElementById("questions-container");
+        questions.forEach((q, index) => {
+            const card = document.createElement("div");
+            card.className = "glass-card p-6 rounded-2xl shadow-md space-y-3 transition duration-300 hover:border-indigo-500/50";
+            card.innerHTML = `
+                <div class="flex items-center justify-between text-xs text-indigo-400 font-semibold uppercase tracking-wider">
+                    <span>Aufgabe ${index + 1} von 10</span>
+                </div>
+                <div class="text-base md:text-lg leading-relaxed text-slate-200">
+                    <span>${q.textBefore}</span>
+                    <input type="text" id="q-${q.id}" autocomplete="off" placeholder="..." class="mx-2 px-3 py-1 bg-slate-900/80 border border-slate-700 rounded-lg focus:outline-none focus:border-indigo-500 text-indigo-300 font-medium transition w-48 text-center">
+                    <span>${q.textAfter}</span>
+                </div>
+                <div id="feedback-${q.id}" class="hidden text-sm pt-2"></div>
+            `;
+            container.appendChild(card);
+        });
+
+        // Levenshtein distance for fuzzy string matching (tolerates typos)
+        function getSimilarity(s1, s2) {
+            let longer = s1.toLowerCase().trim();
+            let shorter = s2.toLowerCase().trim();
+            if (longer.length < shorter.length) {
+                let temp = longer;
+                longer = shorter;
+                shorter = temp;
+            }
+            let longerLength = longer.length;
+            if (longerLength === 0) return 1.0;
+            return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+        }
+
+        function editDistance(s1, s2) {
+            let costs = new Array();
+            for (let i = 0; i <= s1.length; i++) {
+                let lastValue = i;
+                for (let j = 0; j <= s2.length; j++) {
+                    if (i == 0) costs[j] = j;
+                    else {
+                        if (j > 0) {
+                            let newValue = costs[j - 1];
+                            if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                                newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                            costs[j - 1] = lastValue;
+                            lastValue = newValue;
+                        }
+                    }
+                }
+                if (i > 0) costs[s2.length] = lastValue;
+            }
+            return costs[s2.length];
+        }
+
+        // Form Submit
+        document.getElementById("quiz-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            let score = 0;
+
+            questions.forEach(q => {
+                const input = document.getElementById(`q-${q.id}`);
+                const feedback = document.getElementById(`feedback-${q.id}`);
+                const userVal = input.value.trim();
+
+                let isCorrect = false;
+                
+                // Check if user input matches any acceptable answers (allowing small typos)
+                q.answers.forEach(ans => {
+                    if (getSimilarity(userVal, ans) >= 0.85) {
+                        isCorrect = true;
+                    }
+                });
+
+                feedback.classList.remove("hidden");
+                if (isCorrect) {
+                    score++;
+                    input.className = input.className.replace("border-slate-700", "border-emerald-500 bg-emerald-950/30");
+                    feedback.className = "text-sm text-emerald-400 font-medium";
+                    feedback.innerHTML = `<i class="fas fa-check mr-1"></i> Richtig!`;
+                } else {
+                    input.className = input.className.replace("border-slate-700", "border-rose-500 bg-rose-950/30");
+                    feedback.className = "text-sm text-rose-400 font-medium";
+                    feedback.innerHTML = `<i class="fas fa-xmark mr-1"></i> Falsch. Richtig wäre z.B.: <strong>${q.answers[0]}</strong>`;
+                }
+            });
+
+            // Calculate Grade (German standard grading scheme)
+            let grade = "6";
+            let gradeClass = "bg-rose-600";
+            let title = "Oje, da musst du noch üben!";
+            let desc = "Geh am besten nochmal die Regeln für Typ 1, 2 und 3 durch!";
+
+            if (score === 10) {
+                grade = "1";
+                gradeClass = "bg-emerald-500";
+                title = "Perfekt! Sehr gut!";
+                desc = "Du bist absolut bereit für deine Arbeit morgen!";
+            } else if (score >= 8) {
+                grade = "2";
+                gradeClass = "bg-emerald-600";
+                title = "Gut gemacht!";
+                desc = "Das sieht schon richtig solide aus.";
+            } else if (score >= 6.5) {
+                grade = "3";
+                gradeClass = "bg-yellow-500";
+                title = "Befriedigend";
+                desc = "Ein paar Fehler waren dabei, aber im Großen und Ganzen okay.";
+            } else if (score >= 5) {
+                grade = "4";
+                gradeClass = "bg-orange-500";
+                title = "Ausreichend";
+                desc = "Schau dir die falschen Aufgaben nochmal genau an.";
+            } else if (score >= 3) {
+                grade = "5";
+                gradeClass = "bg-rose-500";
+                title = "Mangelhaft";
+                desc = "Wiederhole unbedingt noch die Formen der Verben!";
+            }
+
+            // Display Results
+            document.getElementById("submit-btn").classList.add("hidden");
+            const resultCard = document.getElementById("result-card");
+            resultCard.classList.remove("hidden");
+
+            const badge = document.getElementById("grade-badge");
+            badge.textContent = "Note " + grade;
+            badge.className = `w-28 h-28 mx-auto rounded-full flex items-center justify-center text-3xl font-extrabold text-white shadow-2xl mb-4 ${gradeClass}`;
+
+            document.getElementById("result-title").textContent = title;
+            document.getElementById("result-desc").textContent = desc;
+            document.getElementById("correct-count").textContent = score;
+            document.getElementById("percentage").textContent = Math.round((score / 10) * 100) + "%";
+
+            // Scroll to Results
+            resultCard.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+```eof
+
+Ich habe dir eine HTML-Datei mit deinen Vorgaben erstellt. Speichere den Code als `index.html` ab und öffne sie einfach mit einem doppelten Mausklick in deinem Browser. 
+
+Viel Erfolg bei deiner Englischarbeit morgen!
