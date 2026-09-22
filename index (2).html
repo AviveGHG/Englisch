@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Sentences Type 2 - Interactive Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        /* Animated Background Elements */
+        .bg-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+        .bg-glow-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, #6366f1 0%, rgba(99, 102, 241, 0) 70%);
+            animation: floatGlow 12s ease-in-out infinite alternate;
+        }
+        .bg-glow-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, #a855f7 0%, rgba(168, 85, 247, 0) 70%);
+            animation: floatGlow 15s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 40px) scale(1.1); }
+        }
+
+        /* Glassmorphism Design */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+        .glass-input {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+            outline: none;
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        /* Animations */
+        .card-entry {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .pulse-subtle {
+            animation: pulseGlow 3s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="relative flex flex-col justify-between py-10 px-4 sm:px-6">
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto w-full space-y-8">
+
+        <!-- Header Block -->
+        <header class="text-center space-y-3 card-entry" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold tracking-wide uppercase">
+                <i class="fa-solid fa-graduation-cap"></i> Klasse 8 • Englisch Grammatik
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300">
+                Conditional Sentences – Type 2
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
+                <span class="text-indigo-300 font-medium">Unreal situations in the present</span><br>
+                Trage die richtigen Verbformen ein. Du musst keine Großbuchstaben beachten!
+            </p>
+        </header>
+
+        <!-- Rule Card -->
+        <div class="glass-card rounded-2xl p-5 border-l-4 border-indigo-500 card-entry space-y-2" style="animation-delay: 0.2s;">
+            <div class="flex items-center gap-2 text-indigo-300 font-bold text-sm uppercase tracking-wider">
+                <i class="fa-solid fa-lightbulb text-amber-400 text-base"></i> Spickzettel / Erinnerung
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Beim <strong class="text-white">Conditional Type 2</strong> gilt:<br>
+                • Im <strong>If-Satz</strong> steht das <span class="text-indigo-300 font-semibold">Simple Past</span> (z.B. <em>had, lived, knew, was/were</em>).<br>
+                • Im <strong>Hauptsatz</strong> steht <span class="text-purple-300 font-semibold">would + Infinitiv</span> (z.B. <em>would travel, wouldn't buy</em>).
+            </p>
+        </div>
+
+        <!-- Quiz Form -->
+        <form id="quizForm" class="space-y-5">
+            
+            <!-- Sentence 1 -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 hover:border-indigo-500/40 card-entry" style="animation-delay: 0.3s;">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Satz 1</span>
+                    <span class="text-xs text-slate-400">If-Satz am Anfang</span>
+                </div>
+                <div class="text-base sm:text-lg text-slate-200 leading-loose flex flex-wrap items-center gap-y-3">
+                    <span>If I</span>
+                    <input type="text" data-q="1_1" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-32 sm:w-40" placeholder="..." autocomplete="off">
+                    <span>(have) more free time, I</span>
+                    <input type="text" data-q="1_2" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-44 sm:w-52" placeholder="..." autocomplete="off">
+                    <span>(travel) to Australia.</span>
+                </div>
+                <div id="fb-1" class="hidden mt-3 text-sm font-medium"></div>
+            </div>
+
+            <!-- Sentence 2 -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 hover:border-indigo-500/40 card-entry" style="animation-delay: 0.4s;">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Satz 2</span>
+                    <span class="text-xs text-slate-400">Hauptsatz am Anfang</span>
+                </div>
+                <div class="text-base sm:text-lg text-slate-200 leading-loose flex flex-wrap items-center gap-y-3">
+                    <span>She</span>
+                    <input type="text" data-q="2_1" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-44 sm:w-52" placeholder="..." autocomplete="off">
+                    <span>(be) much happier if she</span>
+                    <input type="text" data-q="2_2" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-32 sm:w-40" placeholder="..." autocomplete="off">
+                    <span>(live) near the beach.</span>
+                </div>
+                <div id="fb-2" class="hidden mt-3 text-sm font-medium"></div>
+            </div>
+
+            <!-- Sentence 3 -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 hover:border-indigo-500/40 card-entry" style="animation-delay: 0.5s;">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Satz 3</span>
+                    <span class="text-xs text-slate-400">Verneinung beachten</span>
+                </div>
+                <div class="text-base sm:text-lg text-slate-200 leading-loose flex flex-wrap items-center gap-y-3">
+                    <span>I</span>
+                    <input type="text" data-q="3_1" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-44 sm:w-52" placeholder="..." autocomplete="off">
+                    <span>(not buy) a new phone if it</span>
+                    <input type="text" data-q="3_2" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-32 sm:w-40" placeholder="..." autocomplete="off">
+                    <span>(be) so expensive.</span>
+                </div>
+                <div id="fb-3" class="hidden mt-3 text-sm font-medium"></div>
+            </div>
+
+            <!-- Sentence 4 -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 hover:border-indigo-500/40 card-entry" style="animation-delay: 0.6s;">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Satz 4</span>
+                    <span class="text-xs text-slate-400">If-Satz am Anfang</span>
+                </div>
+                <div class="text-base sm:text-lg text-slate-200 leading-loose flex flex-wrap items-center gap-y-3">
+                    <span>If we</span>
+                    <input type="text" data-q="4_1" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-32 sm:w-40" placeholder="..." autocomplete="off">
+                    <span>(know) more about the country, we</span>
+                    <input type="text" data-q="4_2" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-44 sm:w-52" placeholder="..." autocomplete="off">
+                    <span>(plan) a trip.</span>
+                </div>
+                <div id="fb-4" class="hidden mt-3 text-sm font-medium"></div>
+            </div>
+
+            <!-- Sentence 5 -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 hover:border-indigo-500/40 card-entry" style="animation-delay: 0.7s;">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Satz 5</span>
+                    <span class="text-xs text-slate-400">Verneinung im Hauptsatz</span>
+                </div>
+                <div class="text-base sm:text-lg text-slate-200 leading-loose flex flex-wrap items-center gap-y-3">
+                    <span>They</span>
+                    <input type="text" data-q="5_1" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-48 sm:w-56" placeholder="..." autocomplete="off">
+                    <span>(not move) to another city if they</span>
+                    <input type="text" data-q="5_2" class="glass-input mx-2 px-3 py-1.5 text-center font-semibold text-indigo-200 rounded-lg w-32 sm:w-40" placeholder="..." autocomplete="off">
+                    <span>(like) their school.</span>
+                </div>
+                <div id="fb-5" class="hidden mt-3 text-sm font-medium"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-4 card-entry" style="animation-delay: 0.8s;">
+                <button type="submit" id="submitBtn" class="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 text-white font-bold text-lg shadow-xl shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 pulse-subtle">
+                    <i class="fa-solid fa-paper-plane"></i> Test abgeben & Note anzeigen
+                </button>
+            </div>
+        </form>
+
+        <!-- Result Section (Initially Hidden) -->
+        <div id="resultSection" class="hidden glass-card rounded-3xl p-8 text-center space-y-6 border border-indigo-500/30">
+            <div class="inline-block">
+                <div id="gradeBadge" class="w-28 h-28 mx-auto rounded-full flex items-center justify-center text-4xl font-extrabold text-white shadow-2xl transition-transform duration-500 transform hover:scale-110">
+                    -
+                </div>
+            </div>
+            
+            <div>
+                <h2 id="resultTitle" class="text-3xl font-extrabold text-white mb-2"></h2>
+                <p id="resultDesc" class="text-slate-300 text-sm sm:text-base max-w-md mx-auto"></p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 max-w-md mx-auto bg-slate-900/60 p-4 rounded-2xl border border-slate-700/50">
+                <div class="text-center">
+                    <span class="block text-xs uppercase tracking-wider text-slate-400 font-semibold">Punkte</span>
+                    <span id="scoreText" class="text-2xl font-bold text-emerald-400">0 / 10</span>
+                </div>
+                <div class="text-center border-x border-slate-800">
+                    <span class="block text-xs uppercase tracking-wider text-slate-400 font-semibold">Prozent</span>
+                    <span id="percentText" class="text-2xl font-bold text-indigo-400">0%</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-xs uppercase tracking-wider text-slate-400 font-semibold">Fehler</span>
+                    <span id="mistakesText" class="text-2xl font-bold text-rose-400">0</span>
+                </div>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="window.location.reload()" class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl transition border border-slate-700 hover:border-slate-500 flex items-center gap-2 mx-auto">
+                    <i class="fa-solid fa-rotate-right"></i> Test noch einmal versuchen
+                </button>
+            </div>
+        </div>
+
+        <footer class="text-center text-xs text-slate-500 pt-6">
+            Perfekte Vorbereitung auf deine morgige Englischarbeit! 🚀
+        </footer>
+
+    </div>
+
+    <script>
+        // Target Answers Specification with typo tolerance
+        const correctAnswers = {
+            "1_1": ["had"],
+            "1_2": ["would travel", "would travell", "d travel", "'d travel"],
+            "2_1": ["would be", "d be", "'d be"],
+            "2_2": ["lived"],
+            "3_1": ["would not buy", "wouldnt buy", "wouldn't buy", "d not buy"],
+            "3_2": ["was", "were"],
+            "4_1": ["knew"],
+            "4_2": ["would plan", "d plan", "'d plan"],
+            "5_1": ["would not move", "wouldnt move", "wouldn't move", "d not move"],
+            "5_2": ["liked"]
+        };
+
+        const solutionDisplay = {
+            1: "If I <strong>had</strong> ..., I <strong>would travel</strong> ...",
+            2: "She <strong>would be</strong> ... if she <strong>lived</strong> ...",
+            3: "I <strong>wouldn't buy</strong> ... if it <strong>was/were</strong> ...",
+            4: "If we <strong>knew</strong> ..., we <strong>would plan</strong> ...",
+            5: "They <strong>wouldn't move</strong> ... if they <strong>liked</strong> ..."
+        };
+
+        // Fuzzy matching (Levenshtein distance)
+        function editDistance(s1, s2) {
+            s1 = s1.toLowerCase().trim();
+            s2 = s2.toLowerCase().trim();
+            let costs = new Array();
+            for (let i = 0; i <= s1.length; i++) {
+                let lastValue = i;
+                for (let j = 0; j <= s2.length; j++) {
+                    if (i == 0) costs[j] = j;
+                    else {
+                        if (j > 0) {
+                            let newValue = costs[j - 1];
+                            if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                                newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                            costs[j - 1] = lastValue;
+                            lastValue = newValue;
+                        }
+                    }
+                }
+                if (i > 0) costs[s2.length] = lastValue;
+            }
+            return costs[s2.length];
+        }
+
+        function checkAnswer(userInput, validAnswers) {
+            let cleanInput = userInput.toLowerCase().trim();
+            if(!cleanInput) return false;
+
+            for (let ans of validAnswers) {
+                let cleanAns = ans.toLowerCase().trim();
+                if (cleanInput === cleanAns) return true;
+                
+                // Allow 1 typo for short words, 2 for longer ones
+                let maxDiff = cleanAns.length > 7 ? 2 : 1;
+                if (editDistance(cleanInput, cleanAns) <= maxDiff) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let totalPoints = 0; // 10 possible points (2 per sentence)
+            
+            for(let sentenceId = 1; sentenceId <= 5; sentenceId++) {
+                let key1 = `${sentenceId}_1`;
+                let key2 = `${sentenceId}_2`;
+
+                let input1 = document.querySelector(`[data-q="${key1}"]`);
+                let input2 = document.querySelector(`[data-q="${key2}"]`);
+                let feedbackEl = document.getElementById(`fb-${sentenceId}`);
+
+                let correct1 = checkAnswer(input1.value, correctAnswers[key1]);
+                let correct2 = checkAnswer(input2.value, correctAnswers[key2]);
+
+                // Style inputs
+                if(correct1) {
+                    totalPoints += 1;
+                    input1.classList.remove('border-rose-500', 'bg-rose-950/30');
+                    input1.classList.add('border-emerald-500', 'bg-emerald-950/40');
+                } else {
+                    input1.classList.remove('border-emerald-500', 'bg-emerald-950/40');
+                    input1.classList.add('border-rose-500', 'bg-rose-950/40');
+                }
+
+                if(correct2) {
+                    totalPoints += 1;
+                    input2.classList.remove('border-rose-500', 'bg-rose-950/30');
+                    input2.classList.add('border-emerald-500', 'bg-emerald-950/40');
+                } else {
+                    input2.classList.remove('border-emerald-500', 'bg-emerald-950/40');
+                    input2.classList.add('border-rose-500', 'bg-rose-950/40');
+                }
+
+                // Show feedback per sentence
+                feedbackEl.classList.remove('hidden');
+                if(correct1 && correct2) {
+                    feedbackEl.className = "mt-3 text-sm font-semibold text-emerald-400 flex items-center gap-1.5";
+                    feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Beide Lücken perfekt gelöst!`;
+                } else {
+                    feedbackEl.className = "mt-3 text-sm font-medium text-rose-300 bg-rose-950/40 p-2.5 rounded-xl border border-rose-800/50 flex flex-col gap-1";
+                    feedbackEl.innerHTML = `<span><i class="fa-solid fa-circle-xmark text-rose-400 mr-1"></i> Musterlösung: ${solutionDisplay[sentenceId]}</span>`;
+                }
+            }
+
+            // Grade calculation based on German grading system
+            let grade = "6";
+            let gradeColor = "bg-rose-600";
+            let title = "Oje, da musst du noch etwas üben!";
+            let desc = "Geh noch einmal die Regeln für das Simple Past und 'would + Infinitiv' durch.";
+
+            if(totalPoints === 10) {
+                grade = "1";
+                gradeColor = "bg-emerald-500 shadow-emerald-500/50";
+                title = "Spektakulär! Note 1!";
+                desc = "Du hast alle 10 Lücken perfekt ausgefüllt. Du bist absolut bereit für die Englischarbeit!";
+            } else if(totalPoints >= 8) {
+                grade = "2";
+                gradeColor = "bg-emerald-600 shadow-emerald-600/50";
+                title = "Starke Leistung! Note 2!";
+                desc = "Sehr gutes Verständnis des Conditional Type 2!";
+            } else if(totalPoints >= 6) {
+                grade = "3";
+                gradeColor = "bg-amber-500 shadow-amber-500/50";
+                title = "Gute Arbeit! Note 3!";
+                desc = "Schon recht gut! Schau dir noch die kleinen Fehler bei den Verben an.";
+            } else if(totalPoints >= 5) {
+                grade = "4";
+                gradeColor = "bg-orange-500 shadow-orange-500/50";
+                title = "Ausreichend! Note 4";
+                desc = "Du hast die Hälfte richtig. Wiederhole nochmal die Bildung von would + Verb!";
+            } else if(totalPoints >= 3) {
+                grade = "5";
+                gradeColor = "bg-rose-500 shadow-rose-500/50";
+                title = "Mangelhaft! Note 5";
+                desc = "Schau dir nochmal im Schulbuch an, wie Conditional Sentences Type 2 gebildet werden.";
+            }
+
+            // Display results
+            document.getElementById('quizForm').classList.add('opacity-80');
+            document.getElementById('submitBtn').classList.add('hidden');
+            
+            const resultSection = document.getElementById('resultSection');
+            resultSection.classList.remove('hidden');
+
+            const badge = document.getElementById('gradeBadge');
+            badge.textContent = "Note " + grade;
+            badge.className = `w-28 h-28 mx-auto rounded-full flex items-center justify-center text-3xl font-extrabold text-white shadow-2xl transition-transform duration-500 transform hover:scale-110 ${gradeColor}`;
+
+            document.getElementById('resultTitle').textContent = title;
+            document.getElementById('resultDesc').textContent = desc;
+            document.getElementById('scoreText').textContent = `${totalPoints} / 10`;
+            document.getElementById('percentText').textContent = `${(totalPoints * 10)}%`;
+            document.getElementById('mistakesText').textContent = `${10 - totalPoints}`;
+
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
